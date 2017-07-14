@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 配置 -->
+	<include file="struts_config.xml"></include>
+	
+ 	<package name="index" extends="struts-default" namespace="/">
+ 		<!-- UserAction 用户操作 -->
+ 		<action name="User_*" class="cn.zqrc.ftms.pro.action.UserAction" method="{1}">
+			<result name="login">/WEB-INF/jsp/index.jsp</result>
+			<result name="error">/WEB-INF/jsp/login.jsp</result>
+			<result name="staff">/WEB-INF/jsp/staff.jsp</result>
+			<result name="add">/WEB-INF/jsp/person_add.jsp</result>
+			<result name="update">/WEB-INF/jsp/staff_update.jsp</result>
+			<result name="myUpdate">/WEB-INF/jsp/person.jsp</result>
+		</action> 
+		
+		<!-- 基本页面跳转 -->
+		<action name="Index_*" class="cn.zqrc.ftms.pro.action.IndexAction" method="{1}">
+			<result name="situation">/WEB-INF/jsp/project_situation.jsp</result>
+			<result name="my">/WEB-INF/jsp/project_my.jsp</result>
+			<result name="histry">/WEB-INF/jsp/project_histry.jsp</result>
+			<result name="manger">/WEB-INF/jsp/project_manger.jsp</result>
+			<result name="brand">/WEB-INF/jsp/brand.jsp</result>
+			<result name="staff">/WEB-INF/jsp/staff.jsp</result>
+			<result name="person">/WEB-INF/jsp/person.jsp</result>
+			<result name="out">/WEB-INF/jsp/login.jsp</result>
+		</action>
+		
+		<!-- 项目管理 -->
+		<action name="manger_*" class="cn.zqrc.ftms.pro.action.BidAction" method="{1}">
+			<result name="show">/WEB-INF/jsp/index.jsp</result>
+		</action> 
+		
+	</package>
+
+</struts>    

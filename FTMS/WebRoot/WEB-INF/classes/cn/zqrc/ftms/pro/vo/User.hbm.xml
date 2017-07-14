@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="cn.zqrc.ftms.pro.vo.User" table="user" catalog="trade">
+	
+	
+		<id name="id" type="java.lang.Integer">
+			<column name="u_id" />
+			<generator class="native"></generator>
+		</id>
+		<many-to-one name="role" lazy="false" class="cn.zqrc.ftms.pro.vo.Role" fetch="select">
+			<column name="u_role" />
+		</many-to-one>
+		<property name="password" type="java.lang.String">
+			<column name="u_password" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="u_name" />
+		</property>
+		<property name="phone" type="java.lang.String">
+			<column name="u_phone" length="13" />
+		</property>
+		<property name="userName" type="java.lang.String">
+			<column name="u_userName" />
+		</property>
+		<property name="loginTime">
+			<column name="u_loginTime" length="0" />
+		</property>
+		<property name="loginIp" type="java.lang.String">
+			<column name="u_loginIP" />
+		</property>
+		<property name="letterCart" type="java.lang.String">
+			<column name="u_letterCart" />
+		</property>
+		<property name="info" type="java.lang.String">
+			<column name="u_info" />
+		</property>
+		<set name="brands" lazy="false" inverse="true">
+			<key>
+				<column name="b_user" />
+			</key>
+			<one-to-many class="cn.zqrc.ftms.pro.vo.Brand" />
+		</set>
+		<set name="examinations" lazy="false" inverse="true">
+			<key>
+				<column name="e_user" />
+			</key>
+			<one-to-many class="cn.zqrc.ftms.pro.vo.Examination" />
+		</set>
+		<set name="clears" lazy="false" inverse="true">
+			<key>
+				<column name="cle_user" />
+			</key>
+			<one-to-many class="cn.zqrc.ftms.pro.vo.Clear" />
+		</set>
+		<set name="payments" lazy="false" inverse="true">
+			<key>
+				<column name="pay_user" />
+			</key>
+			<one-to-many class="cn.zqrc.ftms.pro.vo.Payment" />
+		</set>
+		<set name="projects" lazy="false" inverse="true">
+			<key>
+				<column name="p_user" />
+			</key>
+			<one-to-many class="cn.zqrc.ftms.pro.vo.Project" />
+		</set>
+		<set name="receivables" lazy="false" inverse="true">
+			<key>
+				<column name="re_user" />
+			</key>
+			<one-to-many class="cn.zqrc.ftms.pro.vo.Receivable" />
+		</set>
+	</class>
+</hibernate-mapping>
